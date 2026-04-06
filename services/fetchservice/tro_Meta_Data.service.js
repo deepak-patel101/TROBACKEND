@@ -27,17 +27,16 @@ export const get_Meta_Data_Service = async (query) => {
 
           // create shift group if not exists
           if (!acc[shift]) {
-            acc[shift] = { shift };
+            acc[shift] = { shift, date };
           }
 
           // create office array if not exists
           if (!acc[shift][office]) {
             acc[shift][office] = [];
           }
-
           // push staff into that office
           acc[shift][office].push(staff);
-
+          console.log(acc);
           return acc;
         }, {}),
       );
