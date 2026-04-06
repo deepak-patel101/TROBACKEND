@@ -16,7 +16,9 @@ export const get_Meta_Data_Service = async (query) => {
 
     /// apply condition to get data  as per pass with the api
     if (date) {
-      [metaData] = await db.query(`SELECT * FROM meta_data`);
+      [metaData] = await db.query(`SELECT * FROM meta_data where date = ?`, [
+        date,
+      ]);
 
       //   [currentData] = await db.query(
       //     `SELECT * FROM t_cms_working_hours WHERE cms_month = ? AND cms_year = ?`,
