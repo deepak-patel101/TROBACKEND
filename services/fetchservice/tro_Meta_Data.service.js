@@ -13,27 +13,38 @@ export const get_Meta_Data_Service = async (query) => {
     }
 
     let metaData = [];
+    let result = [];
 
     /// apply condition to get data  as per pass with the api
     if (date) {
       [metaData] = await db.query(`SELECT * FROM meta_data where date = ?`, [
         date,
       ]);
+      const uniqueShift = ["00-08", "08-16", "16-24"];
+      const filterData = Object.values(
+        metaData.reduce((acc, curr) => {
+          const { shift, office, staff } = curr;
 
-      //   [currentData] = await db.query(
-      //     `SELECT * FROM t_cms_working_hours WHERE cms_month = ? AND cms_year = ?`,
-      //     [cms_month, baseYear],
-      //   );
+          // create shift group if not exists
+          if (!acc[shift]) {
+            acc[shift] = { shift };
+          }
 
-      //   [previousData] = await db.query(
-      //     `SELECT * FROM t_cms_working_hours WHERE cms_month = ? AND cms_year = ?`,
-      //     [cms_month, baseYear - 1],
-      //   );
+          // create office array if not exists
+          if (!acc[shift][office]) {
+            acc[shift][office] = [];
+          }
+
+          // push staff into that office
+          acc[shift][office].push(staff);
+
+          return acc;
+        }, {}),
+      );
 
       return {
         status: "ok",
-        // mode: "month_only",
-        data: metaData,
+        data: filterData,
       };
     }
   } catch (error) {
