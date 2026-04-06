@@ -29,7 +29,7 @@ if (isProduction) {
     console.log("✅ HTTPS server running on port 5750");
   });
 } else {
-  const PORT = process.env.PORT || 5610;
+  const PORT = process.env.PORT || 5750;
   app.listen(PORT, () => {
     console.log(`Dev server running on http://localhost:${PORT}`);
   });

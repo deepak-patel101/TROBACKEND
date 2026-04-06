@@ -1,10 +1,9 @@
-import mysql from "mysql2/promise"; 
+import mysql from "mysql2/promise";
 import { dbConfig } from "./config.js";
 
 if (process.env.ENV !== "development") {
   dbConfig.port = process.env.DATABASE_PORT;
 }
-
 
 export const db = mysql.createPool({
   ...dbConfig,
@@ -15,8 +14,11 @@ export const db = mysql.createPool({
 
 export const dbConnect = async () => {
   try {
-    const connection = await db.getConnection(); 
+    const connection = await db.getConnection();
     console.log("Connected to MySQL database!");
+    console.log(
+      "---------------------------------------WATCH LOGS---------------------------------------------",
+    );
     connection.release();
   } catch (err) {
     console.error(" MySQL Connection Error:", err);
