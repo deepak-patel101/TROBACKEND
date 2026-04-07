@@ -43,7 +43,7 @@ export const get_Meta_Data_Service = async (query) => {
 
       return {
         status: "ok",
-        data: filterData,
+        data: metaData,
       };
     }
   } catch (error) {
