@@ -2,11 +2,13 @@ import express from "express";
 import { get_tro_Meta_data_controller } from "../controller/fetchcontroller/get_tro_Meta_data.controller.js";
 import { Insert_Meta_Data_Controller } from "../controller/insertcontroller/Insert_Meta_Data.controller.js";
 import { delete_Meta_Data_Controller } from "../controller/deletecontroller/detele_meta_data.controller.js";
+import { get_m_loco_controller } from "../controller/fetchcontroller/get_m_loco.controller.js";
 
 const routes = express.Router();
 
 //                  for getting data                      ////////////////////////
 routes.get("/metaData", get_tro_Meta_data_controller);
+routes.get("/loco_master", get_m_loco_controller);
 
 //                   for inserting data                   //////////////////////////
 routes.post("/insert_metadata", Insert_Meta_Data_Controller);
