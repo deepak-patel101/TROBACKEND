@@ -6,7 +6,7 @@ const REQUIRED_FIELDS = [
   `loco_no`,
   `lp_name`,
   `alp_name`,
-  `hq`,
+  // `hq`,
   `shed`,
   `engine_schedule`,
   `station`,
