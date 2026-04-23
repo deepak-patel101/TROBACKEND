@@ -12,6 +12,7 @@ import { get_m_defect_service } from "../services/fetchservice/get_m_defect_serv
 import { get_m_defect_controller } from "../controller/fetchcontroller/get_m_defect.controller.js";
 import { Insert_Defect_Categories_Data_Controller } from "../controller/insertcontroller/Insert_Defect_Categories_Data.controller.js";
 import { Insert_Defective_Controller } from "../controller/insertcontroller/Insert_Defect.controller.js";
+import { get_defect_controller } from "../controller/fetchcontroller/get_defect.controller.js";
 
 const routes = express.Router();
 
@@ -21,6 +22,7 @@ routes.get("/loco_master", get_m_loco_controller);
 routes.get("/crew", get_m_crew_controller);
 routes.get("/train_no", get_m_train_no_controller);
 routes.get("/defect_categories", get_m_defect_controller);
+routes.get("/defect", get_defect_controller);
 
 ////////////////////for inserting data ////////////////////////////////////
 routes.post("/insert_metadata", Insert_Meta_Data_Controller);
