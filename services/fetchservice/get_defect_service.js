@@ -18,7 +18,7 @@ export const get_defect_service = async (dates) => {
         [startDate, endDate],
       );
 
-      // ✅ Format dates here
+      // Format dates here
       const formattedData = defect.map((item) => ({
         ...item,
         date: item.date ? item.date.toISOString().split("T")[0] : null,

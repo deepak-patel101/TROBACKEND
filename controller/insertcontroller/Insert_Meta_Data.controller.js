@@ -1,4 +1,5 @@
 import { insert_Loco_Data_service } from "../../services/insertservice/insert_Loco_Data.service.js";
+import { insert_Meta_Data_service } from "../../services/insertservice/insert_Meta_Data.service.js";
 
 const REQUIRED_FIELDS = ["date", "office", "staff", "shift"];
 
@@ -27,7 +28,7 @@ export const Insert_Meta_Data_Controller = async (req, res) => {
       }
     }
 
-    const result = await insert_Loco_Data_service(metaData);
+    const result = await insert_Meta_Data_service(metaData);
 
     return res.status(200).json({
       status: "ok",
