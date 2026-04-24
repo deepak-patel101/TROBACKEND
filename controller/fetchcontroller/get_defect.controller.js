@@ -2,9 +2,9 @@ import { get_defect_service } from "../../services/fetchservice/get_defect_servi
 
 export const get_defect_controller = async (req, res) => {
   try {
-    const dates = req.body;
-    const filters = dates[0];
-    console.log("hitting get api", filters);
+    const dates = req.query;
+    const filters = dates;
+    console.log("hitting get api", dates);
 
     const defect = await get_defect_service(filters);
     return res.status(defect.status === "ok" ? 200 : 500).json(defect);
