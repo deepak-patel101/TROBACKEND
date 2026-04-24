@@ -14,7 +14,7 @@ export const get_defect_service = async (dates) => {
 
     if (startDate && endDate) {
       [defect] = await db.query(
-        `SELECT "id", "date", "train_no", "loco_no", "lp_name", "alp_name", "hq", "shed", "engine_schedule", "station", "time", "defect_categories", "defect_details", "tlc_remark",  FROM defective WHERE date BETWEEN ? AND ?`,
+        `SELECT id, date, train_no, loco_no, lp_name, alp_name, hq, shed, engine_schedule, station, time, defect_categories, defect_details, tlc_remark FROM defective WHERE date BETWEEN ? AND ?`,
         [startDate, endDate],
       );
 
