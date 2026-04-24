@@ -1,30 +1,35 @@
 import { db } from "../../db/dbConnect.js";
-
 export const get_defect_service = async (dates) => {
   try {
     const { startDate, endDate } = dates;
-    console.log("start", startDate, "");
-    // Validate inputs
+
     if (!startDate && !endDate) {
       return {
         status: "error",
-        message:
-          "Please provide the start date and end date  info to get any the data!...",
+        message: "Please provide the start date and end date!",
       };
     }
 
     let defect = [];
 
-    /// apply condition to get data  as per pass with the api
     if (startDate && endDate) {
       [defect] = await db.query(
-        `SELECT * FROM defective where date BETWEEN ? AND  ?`,
+        `SELECT * FROM defective WHERE date BETWEEN ? AND ?`,
         [startDate, endDate],
       );
 
+      // ✅ Format dates here
+      const formattedData = defect.map((item) => ({
+        ...item,
+        date: item.date ? item.date.toISOString().split("T")[0] : null,
+        engine_schedule: item.engine_schedule
+          ? item.engine_schedule.toISOString().split("T")[0]
+          : null,
+      }));
+
       return {
         status: "ok",
-        data: defect,
+        data: formattedData,
       };
     }
   } catch (error) {
