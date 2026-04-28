@@ -56,7 +56,7 @@ export const insert_Loco_Data_service = async (loco) => {
         .join(", ");
 
       const insertQuery = `
-        INSERT INTO M_loco (${columns.join(", ")})
+        INSERT INTO M_Loco (${columns.join(", ")})
         VALUES ${values}
       `;
 
@@ -111,7 +111,7 @@ export const insert_Loco_Data_service = async (loco) => {
       if (updates.length === 0) continue;
 
       const updateQuery = `
-        UPDATE M_loco
+        UPDATE M_Loco
         SET ${updates.join(", ")}
         WHERE id = ?
       `;
