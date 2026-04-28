@@ -13,6 +13,7 @@ import { get_m_defect_controller } from "../controller/fetchcontroller/get_m_def
 import { Insert_Defect_Categories_Data_Controller } from "../controller/insertcontroller/Insert_Defect_Categories_Data.controller.js";
 import { Insert_Defective_Controller } from "../controller/insertcontroller/Insert_Defect.controller.js";
 import { get_defect_controller } from "../controller/fetchcontroller/get_defect.controller.js";
+import { universal_Delete_controller } from "../controller/deletecontroller/universal_Delete.controller.js";
 
 const routes = express.Router();
 
@@ -39,4 +40,5 @@ routes.post("/insert_Defect", Insert_Defective_Controller);
 
 ////////////////////////////////////for deleting data ////////////////////////////////////////////////
 routes.delete("/delete_metadata", delete_Meta_Data_Controller);
+routes.delete("/universal_delete", universal_Delete_controller);
 export default routes;
