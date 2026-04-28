@@ -1,6 +1,6 @@
 import { insert_Defect_categories_Services } from "../../services/insertservice/insert_Defect_categories.service.js";
 
-const REQUIRED_FIELDS = ["defect"];
+const REQUIRED_FIELDS = ["defect_categories"];
 
 export const Insert_Defect_Categories_Data_Controller = async (req, res) => {
   try {

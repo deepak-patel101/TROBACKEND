@@ -19,7 +19,7 @@ export const insert_Defect_categories_Services = async (crew) => {
     //  INSERT PART
     // =====================
     if (insertData.length) {
-      const columns = ["defect"];
+      const columns = ["defect_categories"];
 
       const values = insertData
         .map((entry) => {
@@ -32,12 +32,11 @@ export const insert_Defect_categories_Services = async (crew) => {
         INSERT INTO defect_categories (${columns.join(", ")})
         VALUES ${values}
       `;
-
       const [insertResult] = await connection.execute(insertQuery);
       insertedCount = insertResult.affectedRows;
     }
 
-    const allowedColumns = ["defect"];
+    const allowedColumns = ["defect_categories"];
 
     for (const entry of updateData) {
       const updates = [];
